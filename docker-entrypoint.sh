@@ -37,7 +37,7 @@ pnpm i
 pnpm build ${INPUT_ARGS}
 
 # Move generated build
-mv -r ./dist/ /tmp/gh-pages/
+cp -r ./dist/ /tmp/gh-pages/
 
 echo -e "\n${BOLD}Commiting${PLAIN}"
 cd /tmp/gh-pages
