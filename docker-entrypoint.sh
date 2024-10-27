@@ -20,20 +20,20 @@ fi
 [ -z "${INPUT_GITHUBTOKEN}" ] && \
   (echo -e "\n${BOLD}ERROR: Missing githubToken.${PLAIN}" ; exit 1)
 
-echo -ne "${BOLD}PostCSS: ${PLAIN}"
-postcss --version
-
+# Setup Github
 echo -e "\n${BOLD}Setting up Git${PLAIN}"
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git config --global init.defaultBranch main
 echo "machine github.com login ${GITHUB_ACTOR} password ${INPUT_GITHUBTOKEN}" > ~/.netrc
 
+# Clone the source repo
 git clone --depth=1 --single-branch --branch "${INPUT_BRANCH}" "https://x-access-token:${INPUT_GITHUBTOKEN}@github.com/${REPO}.git" /tmp/gh-pages
 rm -rf /tmp/gh-pages/*
 
-
+# Build the website from source
 echo -e "\n${BOLD}Building Site ${NAME} at commit ${GITHUB_SHA}${PLAIN}"
+pnpm i
 pnpm build ${INPUT_ARGS}
 
 # Move generated build
