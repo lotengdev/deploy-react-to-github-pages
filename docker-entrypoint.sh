@@ -20,7 +20,7 @@ fi
 [ -z "${INPUT_GITHUBTOKEN}" ] && \
   (echo -e "\n${BOLD}ERROR: Missing githubToken.${PLAIN}" ; exit 1)
 
-# Setup Github
+# Setup Git
 echo -e "\n${BOLD}Setting up Git${PLAIN}"
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
@@ -37,7 +37,7 @@ pnpm i
 pnpm build ${INPUT_ARGS}
 
 # Move generated build
-mv -R ./dist/ /tmp/gh-pages/
+mv -r ./dist/ /tmp/gh-pages/
 
 echo -e "\n${BOLD}Commiting${PLAIN}"
 cd /tmp/gh-pages
