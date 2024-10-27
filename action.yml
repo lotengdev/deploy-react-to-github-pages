@@ -1,0 +1,34 @@
+name: 'React to Github Pages'
+author: 'lotengdev'
+description: 'GitHub Action for Building a React Site and Pushing it to Github Pages'
+
+inputs:
+  githubToken:
+    description: 'A Github Personal Access Token with Repo permissions'
+    required: true
+
+  cname:
+    description: 'The custom domain name for your GH Pages Site'
+    required: false
+
+  branch:
+    description: 'The branch to push the built site to'
+    required: false
+    default: 'gh-pages'
+  
+  repo:
+    description: 'The repo to push the built site to'
+    required: false
+
+  args:
+    description: 'Arguments to pass when run build command'
+    required: false
+    default: 
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'upload-cloud'  
+  color: 'red'
