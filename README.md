@@ -8,7 +8,7 @@ name: Publish Site
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-deploy:
@@ -16,11 +16,11 @@ jobs:
 
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@main
         with:
           submodules: true
       - name: Publish Site
-        uses: lotengdev/deploy-react-to-github-pages@master
+        uses: lotengdev/deploy-react-to-github-pages@main
         with:
           githubToken: ${{ secrets.PERSONAL_TOKEN }}
 ```
