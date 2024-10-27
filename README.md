@@ -2,7 +2,7 @@
 
 Uses:
 
-```
+```yml
 name: Publish Site
 
 on:
